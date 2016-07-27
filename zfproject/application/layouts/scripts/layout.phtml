@@ -1,0 +1,115 @@
+<html>
+
+<head>
+<?php 
+ if ( $this->ckeditor ) { 
+  echo $this->headScript()->appendFile( $this->baseUrl().'/js/ckeditor/ckeditor.js');
+ }
+  ?>
+ <?php echo $this->headMeta();?>
+ <?php echo $this->headTitle();?>
+ <?php echo  $this->headLink()->prependStylesheet($this->baseUrl().'/css/style.css');?>
+
+ <link href="<?php echo $this->baseUrl() ?>/css/bootstrap.min.css" rel="stylesheet" media="screen">
+ <script src="<?php echo $this->baseUrl() ?>/js/jquery-1.9.1.min.js"></script>
+ <script src="<?php echo $this->baseUrl() ?>/js/bootstrap.min.js"></script>
+ <script src="<?php echo $this->baseUrl() ?>/js/jquery.validate.min.js"></script>
+ <script src="<?php echo $this->baseUrl() ?>/js/actions.js"></script>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+ 
+ 
+ 
+</head>
+
+<body>
+
+
+
+
+<div class="row" >
+
+<header style="height: 50px; background: #ccc; margin: 0px ;border-color: #000"><h1 style="text-align: center; color: red;">7akawy</h1></header>
+
+
+
+ <div class="col-md-12">
+ <!-- left --> 
+<div class="col-md-3">
+  <ul class="nav nav-stacked" id="middle"> 
+       
+       <?php
+       
+       if(Zend_Auth::getInstance()->hasIdentity()){
+       	$userdata=Zend_Auth::getInstance()->getIdentity();
+       	$role=$userdata->role;
+       
+       	if($role=='admin'){
+       		
+       		?>
+       		<li><a href="<?php echo $this->url( array('controller'=>"category","action"=>"add"));?>"><i class="glyphicon glyphicon-book"></i> Add Category</a></li>
+       		<li><a href="<?php echo $this->url( array('controller'=>"categories","action"=>"list"));?>"><i class="glyphicon glyphicon-pencil"></i>list Category</a></li>
+       		<li><a href="<?php echo $this->url( array('controller'=>"forum","action"=>"add"));?>"><i class="glyphicon glyphicon-plus"></i> Add Forum</a></li>
+       		<li><a href="<?php echo $this->url( array('controller'=>"forums","action"=>"list"));?>"><i class="glyphicon glyphicon-pencil"></i>list Forum</a></li>
+       		<li><a href="<?php echo $this->url( array('controller'=>"authentiction","action"=>"logout"));?>"><i class="glyphicon glyphicon-list-alt"></i> logout</a></li>
+       		<li><a href="<?php echo $this->url( array('controller'=>"thread","action"=>"add"));?>"><i class="glyphicon glyphicon-plus"></i> Add thread</a></li>
+       		 
+       		<li><a href="<?php echo $this->url( array('controller'=>"threads","action"=>"list"));?>"><i class="glyphicon glyphicon-pencil"></i>list thread Admin</a></li>
+       		<li><a href="<?php echo $this->url( array('controller'=>"threads","action"=>"list-all-with-sticky"));?>"><i class="glyphicon glyphicon-pencil"></i>list thread</a></li>
+       		<li><a href="<?php echo $this->url( array('controller'=>"replies","action"=>"list"));?>"><i class="glyphicon glyphicon-list-alt"></i> list comments</a></li>
+       		<li><a href="<?php echo $this->url( array('controller'=>"users","action"=>"list"));?>"><i class="glyphicon glyphicon-list-alt"></i> list users</a></li>
+    <?php   		
+       	}
+  
+    	else if($role=='user'){
+    	?>
+    		<li><a href="<?php echo $this->url( array('controller'=>"authentiction","action"=>"logout"));?>"><i class="glyphicon glyphicon-list-alt"></i> logout</a></li>
+    		<li><a href="<?php echo $this->url( array('controller'=>"thread","action"=>"add"));?>"><i class="glyphicon glyphicon-plus"></i> Add thread</a></li>
+    		
+    		<li><a href="<?php echo $this->url( array('controller'=>"threads","action"=>"list"));?>"><i class="glyphicon glyphicon-pencil"></i>list thread you add</a></li>
+    	     	<li><a href="<?php echo $this->url( array('controller'=>"threads","action"=>"list-all-with-sticky"));?>"><i class="glyphicon glyphicon-pencil"></i>list thread with all information </a></li>
+    		  		<li><a href="<?php echo $this->url( array('controller'=>"replies","action"=>"list"));?>"><i class="glyphicon glyphicon-list-alt"></i> list comments</a></li>
+    		 
+    <?php 	}
+       }
+       else
+       {
+?>
+       	<li><a href="<?php echo $this->url( array('controller'=>"authentiction","action"=>"login"));?>"><i class="glyphicon glyphicon-list-alt"></i> login</a></li>
+       	<li><a href="<?php echo $this->url( array('controller'=>"threads","action"=>"list-all-with-sticky"));?>"><i class="glyphicon glyphicon-pencil"></i>list thread </a></li> 
+       	<li><a href="<?php echo $this->url( array('controller'=>"user","action"=>"add"));?>"><i class="glyphicon glyphicon-list-alt"></i> register</a></li>
+       
+   <?php }
+      
+       
+       ?>
+       
+
+  </ul> 
+</div> 
+
+
+<div class="col-md-9">
+
+
+<?php echo $this->layout()->content; ?>
+</div>
+</div>
+
+
+
+</div>
+
+
+
+<footer style="height: 50px; background: #ccc; margin-bottom: 0"><h1 style="text-align: center; color: red;">All right reserved iti</h1></footer>
+  
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+
+
+</body>
+
+</html>

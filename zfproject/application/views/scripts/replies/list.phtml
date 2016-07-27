@@ -1,0 +1,25 @@
+<?php
+
+	for($i=0; $i<count($this->reply); $i++){
+	
+		foreach($this->reply[$i] as $value){
+			
+			echo "$value";
+			
+		}
+		
+			
+	echo "<br/><a href='http://localhost/zfproject/public/reply/edit/id/".$this->reply[$i]['rid']."'>Edit </a>&nbsp;";
+	echo "<a href='http://localhost/zfproject/public/reply/delete/id/".$this->reply[$i]['rid']."'>Delete </a>";
+			
+	?>
+        <html>
+           <body>
+              <hr/>
+           </body>
+        </html>
+	<?php
+	}
+?>
+	
+	

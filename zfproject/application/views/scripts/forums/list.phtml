@@ -1,0 +1,28 @@
+<?php
+//var_dump($this->users);
+echo
+	"<table border='2'>
+	<tr>
+	<th>ID</th>
+	<th>Forum Name</th>
+        <th>Forum Status</th>
+	<th>Category ID</th>
+        <th>User ID</th>
+	<th>Update</th>
+	</tr>";
+	for($i=0; $i<count($this->forums); $i++){
+	echo "<tr>";
+		foreach($this->forums[$i] as $value){
+			echo"<td>";
+			echo "$value";
+			echo"</td>";
+		}
+		
+			echo"<td>";
+	echo "<a href='http://localhost/zfproject/public/forum/edit/id/".$this->forums[$i]['fid']."'>Edit </a>";
+	echo "<a href='http://localhost/zfproject/public/forum/delete/id/".$this->forums[$i]['fid']."'>Delete </a>";
+			echo"</td>";
+	echo "</tr>";
+	}
+	
+	echo "</table>";

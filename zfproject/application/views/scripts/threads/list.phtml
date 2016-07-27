@@ -1,0 +1,44 @@
+
+ <html>
+           <body>
+
+<table border="1">
+<tr>
+<th>ThreadId</th>
+<th>ForumId</th>
+<th>UserId</th>
+<th>Title</th>
+<th>Body</th>
+<th>Type</th>
+<th>Status</th>
+<th>Operations</th>
+</tr>
+           
+    <?php
+
+	for($i=0; $i<count($this->threads); $i++){
+	
+		echo "<tr >"	;
+			echo "<td>".$this->threads[$i]['tid']."</td>";
+	
+			echo "<td>".$this->threads[$i]['fid']."</td>";
+			echo "<td>".$this->threads[$i]['uid']."</td>";
+			echo "<td>".$this->threads[$i]['title']."</td>";
+			echo "<td>".$this->threads[$i]['body']."</td>";
+			echo "<td>".$this->threads[$i]['type']."</td>";
+			echo "<td>".$this->threads[$i]['status']."</td>";
+			echo "<td>";
+	echo "<a href='http://localhost/zfproject/public/thread/edit/id/".$this->threads[$i]['tid']."'>Edit </a>&nbsp;";
+	echo "<a href='http://localhost/zfproject/public/thread/delete/id/".$this->threads[$i]['tid']."'>Delete </a>&nbsp;";
+        echo "<a href='http://localhost/zfproject/public/thread/display/id/".$this->threads[$i]['tid']."'>Display </a>";
+	echo "</ td>";
+        echo"</tr>";
+	}
+	?>
+	</table>
+        <html>
+           <body>
+
+           </body>
+        </html>
+

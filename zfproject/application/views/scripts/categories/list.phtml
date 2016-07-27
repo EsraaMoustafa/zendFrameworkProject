@@ -1,0 +1,26 @@
+<?php
+//var_dump($this->users);
+echo
+	"<table border='2'>
+	<tr>
+	<th>ID</th>
+	<th>Category Name</th>
+	<th>User ID</th>
+	<th>Update</th>
+	</tr>";
+	for($i=0; $i<count($this->categories); $i++){
+	echo "<tr>";
+		foreach($this->categories[$i] as $value){
+			echo"<td>";
+			echo "$value";
+			echo"</td>";
+		}
+		
+			echo"<td>";
+	echo "<a href='http://localhost/zfproject/public/category/edit/id/".$this->categories[$i]['cid']."'>Edit </a>";
+	echo "<a href='http://localhost/zfproject/public/category/delete/id/".$this->categories[$i]['cid']."'>Delete </a>";
+			echo"</td>";
+	echo "</tr>";
+	}
+	
+	echo "</table>";

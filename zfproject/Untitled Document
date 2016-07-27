@@ -1,0 +1,12 @@
+		$publickey = '6LcwHQMTAAAAABvO_ZkaoYYGfLhLiI_QjF4fsaHO';
+		$privatekey = '6LcwHQMTAAAAAGYuyYREerqVR23r7Cf_xIemPocL';
+		$recaptcha = new Zend_Service_ReCaptcha($publickey, $privatekey);
+		
+		$captcha = new Zend_Form_Element_Captcha('captcha',
+				array(
+						'captcha'       => 'ReCaptcha',
+						'captchaOptions' => array('captcha' => 'ReCaptcha', 'service' => $recaptcha),
+						'ignore' => true
+				)
+		);
+		

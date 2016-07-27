@@ -1,0 +1,45 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Thread</b> and script/action name <b>display</b></p>
+	<?php 
+	$this->ckeditor = 'ckeditor';
+	echo "Thread: <br />";
+	echo $this->title;
+	echo "<br />";
+	echo  $this->body;
+	
+	echo "<br />";
+	echo "Reply: <br />";
+	foreach ($this->replies as $v){
+		
+		echo $v['body'];
+		echo "<br />";
+		
+	}
+	echo $this->reerro;
+	
+	if(Zend_Auth::getInstance()->hasIdentity()){
+	
+		$userdata=Zend_Auth::getInstance()->getIdentity();
+		$uid=$userdata->uid;
+
+		
+		echo $this->form;
+		 
+		 
+	}
+	else
+	{
+		echo "Register for comment ";
+	}
+	
+
+	
+	
+	echo $this->setupEditor( 'body' );
+	
+	?>
+	
+	
+	
+</div>

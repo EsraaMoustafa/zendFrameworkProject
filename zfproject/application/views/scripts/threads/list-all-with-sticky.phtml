@@ -1,0 +1,70 @@
+
+ <html>
+           <body>
+
+
+           
+    <?php
+    
+echo "<h2> sticky </h2>"; echo "<br />"; 
+
+for($i=0; $i<count($this->stickyThreads); $i++){
+
+	echo "<br />";
+	echo $this->stickyThreads[$i]['title'];
+	echo "<br />";
+	echo $this->stickyThreads[$i]['body'];echo "<br />";
+	echo $this->stickyThreads[$i]['tid'];echo "<br />";
+	echo $this->stickyThreads[$i]['type'];echo "<br />";
+	echo $this->stickyThreads[$i]['fid'];echo "<br />";
+	$form_model =new Application_Model_Forum();
+	$fname=$form_model->getForumById($this->stickyThreads[$i]['fid']);
+	
+	echo $fname[0]['title'];echo "<br />";
+	echo $this->stickyThreads[$i]['uid'];
+	$user_model =new Application_Model_User();
+	$uname=$user_model->getUserById($this->stickyThreads[$i]['uid']);
+	echo $uname[0]['email'];echo "<br />";
+
+		
+	echo$this->stickyThreads[$i]['status'];echo "<br />";
+
+
+	echo "<a href='http://localhost/zfproject/public/thread/display/id/".$this->stickyThreads[$i]['tid']."'>Display </a>";
+}
+   echo "<br />"; 
+echo "<h2> all </h2>"; echo "<br />";
+	for($i=0; $i<count($this->threads); $i++){
+	
+		echo "<br />";
+		echo $this->threads[$i]['title'];
+		echo "<br />";
+		echo $this->threads[$i]['body'];echo "<br />";
+			echo $this->threads[$i]['tid'];echo "<br />";
+			echo $this->threads[$i]['type'];echo "<br />";
+			echo $this->threads[$i]['fid'];echo "<br />";
+			$form_model =new Application_Model_Forum();
+			$fname=$form_model->getForumById($this->threads[$i]['fid']);
+			echo $fname[0]['title'];echo "<br />";
+			echo $this->threads[$i]['uid'];
+			$user_model =new Application_Model_User();
+			$uname=$user_model->getUserById($this->threads[$i]['uid']);
+			echo $uname[0]['email'];echo "<br />";
+		
+			
+			echo$this->threads[$i]['status'];echo "<br />";
+		
+	
+        echo "<a href='http://localhost/zfproject/public/thread/display/id/".$this->threads[$i]['tid']."'>Display </a>";
+
+
+	?>
+
+        <html>
+           <body>
+         
+           </body>
+        </html>
+	<?php
+	}
+?>
